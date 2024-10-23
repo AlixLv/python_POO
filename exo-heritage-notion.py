@@ -2,9 +2,9 @@
 # définit les inputs et outputs:
 class Vaisseaux_interface:
 	def __init__(self, nom, type, taille):
-		self.nom = nom ; str
-		self.type = type; str
-		self.taille = taille ; float
+		self.nom = str(nom)
+		self.type = str(type)
+		self.taille = float(taille)
 		
 		
 	def retournerParametres(self):
@@ -32,7 +32,7 @@ class Vaisseaux(Vaisseaux_interface):
 class Croiseur(Vaisseaux):
 	def __init__(self, nom, type, taille, hommes):
 		super().__init__(nom, type, taille)
-		self.hommes = hommes; int
+		self.hommes = int(hommes)
 		print(f'Le nombre d\'hommes sur le vaisseau est de {hommes}')	
 
 	def chargerTroupes(self, hommes, charge):
@@ -55,7 +55,7 @@ class Croiseur(Vaisseaux):
 class Intercepteur(Vaisseaux):
 	def __init__(self, nom, type, taille, canon):
 		super().__init__(nom, type, taille)
-		self.canon = canon; int
+		self.canon = int(canon)
 		print(f'{nom} tire {canon} canons')
 
 	def tirer(self, tirs):
