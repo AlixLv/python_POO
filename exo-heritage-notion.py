@@ -7,7 +7,7 @@ class Vaisseaux_interface:
 		self.taille = float(taille)
 		
 		
-	def retournerParametres(self):
+	def __retournerParametres(self):
 		pass
 
 
@@ -23,9 +23,15 @@ class Vaisseaux(Vaisseaux_interface):
 		print(f'La taille du vaisseau {nom} est : {taille}')
 		
 				
-	def retournerParametres(self):
+	def __retournerParametres(self):
 		print("🔍 nom: ", self.nom, "type: ", self.type, "taille: ", self.taille)
 		return self.nom, self.type, self.taille
+
+	def parametresVaisseau(vaisseau):
+		if isinstance(vaisseau, Vaisseaux):
+			print(vaisseau.__retournerParametres())
+		else:
+			print("Ce n'est pas une instance de la classe Vaisseaux!")	
 
 
 # déclaration de la class Croiseurs, qui hérite de la class Vaisseaux
@@ -81,13 +87,6 @@ class Intercepteur(Vaisseaux):
 			print("💣 "f'Canons disponibles: {self.canon}')	 	
 
 
-# Fonction affichant les paramètres par type de vaisseau:
-def parametresVaisseau(vaisseau):
-	if isinstance(vaisseau, Vaisseaux):
-		print(vaisseau.retournerParametres())
-	else:
-		print("Ce n'est pas une instance de la classe Vaisseaux!")	
-
 # --------------------------------- UTILISATIONS DES CLASSES -----------------------------------------------------------------
 
 # Intanciations de classe Croiseur()
@@ -97,12 +96,11 @@ print()
 
 corvette = Croiseur("Corvette", "croiseur", 150, 16, 165)
 print(corvette)
-print()
+print("🍎")
+corvette.parametresVaisseau()
 
 # appel des méthodes sur les deux instanciations de class Croiseur()
 print(acclamator)
-print()
-acclamator.retournerParametres()
 print("🚁")
 acclamator.chargerTroupes(acclamator.capacite, 50)
 print("🚢")
@@ -113,13 +111,13 @@ print()
 acclamator.chargerTroupes(acclamator.capacite, 100)
 print("🚢")
 acclamator.dechargerTroupes(acclamator.capacite, 50)
+print("🍎")
+acclamator.parametresVaisseau()
 
 
 # Intanciations de classe Intercepteur() et appels de méthodes
 # Xwing = Intercepteur("X-wing", "intercepteur", 12.5, 2, 2)
 # print(Xwing)
-# print()
-# print(Xwing.retournerParametres())
 # print()
 # Xwing.tirer(2)
 # print()
@@ -131,8 +129,6 @@ acclamator.dechargerTroupes(acclamator.capacite, 50)
 
 # Ywing = Intercepteur("Y-wing", "intercepteur", 23, 2, 2)
 # print(Ywing)
-# print()
-# print(Ywing.retournerParametres())
 # print()
 
 # print("Fonction affichage des paramètres d'un vaisseau")
